@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>classification</title>
+  </head>
+  <body>
+{% load static %}
+{% csrf_token %}
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+  
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+  body{
+    font-family: 'Poppins';
+    background-color: rgb(239, 229, 229);
+}
+.card {
+  background-color: rgb(211, 204, 204);
+
+    }
+.nav-link{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+}
+.nav-link:hover{
+    color: orange;
+}
+.nav-item{
+    padding-right: 52px;
+    margin-left: -20px;
+}
+.navbar{
+    background-color: black;
+}
+.active{
+    color: orange !important;
+}
+
+/* PREPROCESSING */
+.noted {
+    font-size: smaller;
+    margin-bottom: -10px;
+}
+.info>p{
+    font-weight: 700;
+}
+.box__info{
+    border: solid black;
+    border-radius: 10px;
+    width: 550px;
+    height: 120px;
+    margin-top: -10px;
+}
+.box__info p{
+    display: inline-block;
+    padding-right: 65px;
+    margin: 12px;
+}
+
+.attributes>p{
+    font-weight: 700;
+}
+.box__attributes{
+    border: solid black;
+    border-radius: 10px;
+    width: 550px;
+    height: 200px;
+    margin-top: -10px;
+}
+.box__attributes p{
+    display: inline-block;
+    padding-right: 65px;
+    margin: 12px;
+}
+.scrollAble{
+    overflow-y: scroll;
+    width: 535px;
+    height: 180px;
+}
+.scrollAble table{
+    padding-top: 10px;
+    margin-top: 20px;
+    margin: 12px;
+    width: 520px;
+    height: 180;
+}
+.table_attr{
+    font-size: 12px;
+    margin-top: 15px !important;
+}
+.uploaded{
+    margin-top: 30px;
+}
+.detail{
+    margin-top: -70px;
+}
+.detail>p{
+    font-weight: 700;
+    padding-right: 187px;
+}
+.detail>p, .view, .delete{
+    display: inline-block;
+}
+.radio, .select{
+    display: inline;
+}
+.radio{
+    margin-left: 180px;
+    margin-top: 5px;
+}
+.select{
+    margin-top: 5px;
+}
+.box__detail{
+    border: solid black;
+    border-radius: 10px;
+    width: 550px;
+    height: 250px;
+    margin-top: -10px;
+}
+.box__detail>.scroll>table{
+    margin: 12px;
+    width: 520px;
+    cursor: pointer;
+}
+
+.selectedTable > tbody > tr:hover > td,
+.selectedTable > tbody > tr:hover > th {
+    background-color: rgb(107, 107, 107);
+    color: white;
+}
+
+.scroll{
+    height: 235px;
+    overflow-y: scroll;
+    width: 535px;
+}
+.scrollAblee{
+    height: 280px;
+    overflow-y: scroll;
+}
+/* END PREPROCESSING */
+
+/* CLASSIFICATION */
+.starts{
+    margin-top: -38px;
+    float: right;
+}
+.method{
+    margin-top: 35px;
+}
+.scrollClass{
+    height: 365px;
+    margin: 15px;
+    overflow-y: scroll;
+}
+.method>p{
+    font-weight: 700;
+    margin-top: 7px;
+}
+.option>p{
+    font-weight: 700;
+}
+.modal-body>p{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.box__option{
+    border: solid black;
+    border-radius: 10px;
+    width: 360px;
+    height: 120px;
+    margin-top: -10px;
+}
+.results>p{
+    font-weight: 700;
+}
+.box__results{
+    border: solid black;
+    border-radius: 10px;
+    width: 735px;
+    height: 400px;
+    margin-top: -10px;
+}
+.box__results p{
+    padding-right: 115px;
+    margin: 12px;
+}
+.n_neuron, .activation{
+    display: inline-block;
+}
+.save {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.models{
+    margin-top: -280px;
+}
+.models>p{
+    font-weight: 700;
+}
+.box__models{
+    border: solid black;
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+    margin-top: -10px;
+}
+.btn-group{
+    width: 750px !important;
+    text-align: right !important;
+}
+.dropdown-menu{
+    width: 750px;
+}
+.start{
+    float: right;
+}
+.box__option>.form-check{
+    padding-left: 40px;
+    padding-top: 12px;
+}
+span{
+    color: lightslategrey;
+}
+.radio{
+    margin-top: 11.5px;
+}
+.fold{
+    padding-left: 12px;
+}
+.splitValue{
+    display: inline-block;
+    padding-left: 10px;
+}
+.crossValue{
+    display: inline-block;
+    padding-left: 10px;
+}
+.knn>p{
+    padding-left: 18px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.knnValue{
+    display: flex;
+    padding-left: 18px;
+}
+/* END CLASSIFICATION */
+
+/* CLUSTERING */
+#cluster_btn{
+    margin-top: -38px !important;
+}
+.scrollClusters>p{
+    display: block;
+}
+.scrollClusters{
+    height: 365px;
+    margin: 15px;
+    overflow-y: scroll;
+}
+.box__result{
+    border: solid black;
+    border-radius: 10px;
+    width: 735px;
+    height: 400px;
+    margin-top: -10px;
+}
+.box__result p{
+    padding-right: 115px;
+    margin: 12px;
+}
+.clusters>p{
+    padding-left: 18px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.n_clusters{
+    display: flex;
+    padding-left: 18px;
+}
+.output>p{
+    padding-left: 18px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.outputValue{
+    display: flex;
+    padding-left: 18px;
+}
+.box__model{
+    border: solid black;
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+    margin-top: -10px;
+}
+.model{
+    margin-top: -275px;
+}
+.col-md-0{
+  padding-left: 5%;
+}
+.col-md-0 a{
+  color: white;
+}
+
+  </style>
+<main>
+  <div class="container"><br><br>
+    <div class="card">
+      <div class="card-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-body">
+                              <h3>k-nearest neighbors</h3>
+                              <p id="type1p"> The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-body">
+                          <h3>Naive Bayes</h3>
+                          <p id="type2p">A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. The crux of the classifier is based on the Bayes theorem.</p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="method col-md-3">
+          <p>Select Method Classification</p>
+      </div>
+      <div class="method col-md-9">
+        <form action="{% url 'chooseMethod' %}" method="POST">
+          <div class="btn-group">
+            {% csrf_token %}
+            <select onchange="this.form.submit()" name="method" class="form-select" id="inputMethod">
+              <option>Choose...</option>
+              <option {% if method == '1' %} selected {% endif %} value="1">K-Nearest Neighbors</option>
+              <option {% if method == '2' %} selected {% endif %} value="2">Naive Bayes</option>
+            </select>
+          </div>
+        </form>
+        <form action="{% url 'classification' %}" method="POST">
+        <button class="btn btn-dark starts" type="button" id="file" onclick="this.form.submit()">Start</button>
+      </div>
+  </div>
+  <div class="row">
+      <div class="option col-md-4">
+          <p>Test Options</p>
+          <div class="box__option">
+            {% csrf_token %}
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" value="1" name="validation" id="split" {% if mode == '1' %} checked {% endif %}>
+              <label class="form-check-label" for="split">
+                Percentage split data <span>%</span>
+              </label>
+              <div class="splitValue col-sm-3">
+                <input type="text" name="splitValue" class="form-control" {% if splitValue %} value="{{ splitValue }}" {% endif %} >
+              </div>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" value="2" name="validation" id="cross" {% if mode == '2' %} checked {% endif %}>
+              <label class="form-check-label" for="cross">
+                Cross-validation <span class="fold">folds</span>
+              </label>
+              <div class="crossValue col-sm-3">
+                <input type="text" name="crossValue" class="form-control" {% if crossValue %} value="{{ crossValue }}" {% endif %}>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="results col-md-8">
+          <p>Classification Output</p>
+          <div class="box__results">
+            <div class="scrollClass" id="resultPdf">
+              {% if naiveBayes or knn %}
+                <p>=== Run Information ===</p>
+                <p>Name dataset : {{ name }}</p>
+                <p>Instance : {{ rows }} rows</p>
+                <p>Method : {{ nameMethod }}</p>
+                {% if mode == '1' %}
+                  <p>Test mode : Percentage split data</p>
+                {% elif mode == '2' %}
+                  <p>Test mode : Cross validation</p>
+                {% endif %}
+                {% if method == '1' %}
+                  {% if k %}
+                    <p>Number of K : {{ k }} </p>
+                  {% endif %}
+                {% endif %}
+                <br>
+                <p>=== Final Classification ===</p>
+                <p>Attributes :</p>
+                {% for attribute in attributes %}
+                  <li>{{attribute}}</li>
+                {% endfor %}
+                <p>Fulldata : {{ rows }} data</p>
+                {% if method == '1' %}
+                  <p>Accuracy : {{ knn }} % </p>
+                {% endif %}
+                {% if method == '2' %}
+                  <p>Accuracy : {{ naiveBayes }} % </p>
+                {% endif %}
+                <p>Confusion Matrix : </p>
+                {% if confusion %}
+                  <img style="margin-top: -10px;" src="data:image/png;base64, {{confusion|safe}}">
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="models col-md-4">
+          <p>Create Models</p>
+          <div class="box__models">
+            {% if method == '2' %}
+            <div class="output">
+              <p>Output Data</p>
+              <div class="outputValue col-md-11">
+                <select class="form-select" aria-label="Default select example" name="output">
+                  <option>Select output data</option>
+                  {% if headers %}
+                    {% for header in headers %}
+                      <option value="{{ header }}" {% if header == output %} selected {% endif %}>{{ header }}</option>
+                    {% endfor %}
+                  {% endif %}
+                </select>
+              </div>
+            </div>
+            {% endif %}
+            {% if method == '1' %}
+            <div class="knn">
+              <p>Number of K</p>
+              <div class="knnValue col-md-11">
+                {% csrf_token %}
+                <input type="text" class="form-control" name="knn" {% if k %} value="{{k}}" {% endif %}>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </form>
+      <div class="col-md-0">
+        <button type="button" id="save" class="btn btn-dark save"><a href="/preprocessing">Back</a></button>
+          <button type="button" id="save" class="btn btn-dark save"><a href="/home">Home</button>
+      </div>
+  </div>
+</div>
+</main>
+</body>
+
+
+

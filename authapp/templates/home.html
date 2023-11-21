@@ -1,0 +1,163 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Home</title>
+    <style>
+         body{
+    font-family: 'Poppins';
+    background-color: rgb(239, 229, 229);
+}
+        h2 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: red
+        }
+
+        h3 {
+            color: green;
+        }
+
+        h4 {
+            color: red;
+            font-weight: bold;
+            text-align: center
+        }
+
+        h6 {
+            color: blue;
+            text-decoration: underline;
+        }
+        .row{
+            margin-right: 10%;
+        }
+        .logout{
+            margin-left: 6666%;
+        }
+        
+    </style>
+</head>
+
+<div class="card">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    <h2> ALL THE THINGS YOU NEED TO KNOW ABOUT DIABETES</h3>
+                </div>
+                <div class="col-2">
+                    <a type="submit" class="btn btn-danger" href="/preprocessing">Train</a>
+                    <a type="submit" class="btn btn-danger" href="/pickle">Predict</a>
+
+                </div>
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Type 1 diabetes</h3>
+                            <h6 id="type1">All you need to know</h6>
+                            <p id="type1p">Type 1 diabetes is a serious condition where your blood glucose (sugar) level
+                                is too high because your body can’t make a hormone called insulin.
+                                This happens because your body attacks the cells in your pancreas that make the insulin,
+                                meaning you can’t produce any at all.
+                                We all need insulin to live. It does an essential job. It allows the glucose in our
+                                blood to enter our cells and fuel our bodies.
+                                When you have type 1 diabetes, your body still breaks down the carbohydrate from food
+                                and drink and turns it into glucose. But when the glucose enters your bloodstream,
+                                there’s no insulin to allow it into your body’s cells. More and more glucose then builds
+                                up in your bloodstream, leading to high blood sugar levels.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Type 2 diabetes</h3>
+                            <h6 id="type2">All you need to know</h6>
+                            <p id="type2p">Type 2 diabetes is a serious condition where the insulin your pancreas makes
+                                can’t work properly, or your pancreas can’t make enough insulin. This means your blood
+                                glucose (sugar) levels keep rising.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <h2>what are the signs and symptoms of diabetes?</h2>
+                <h3>Are you worried that you, your child or someone you know may have diabetes? Having some diabetes
+                    symptoms doesn’t mean you definitely have the condition, but you should always contact your GP, just
+                    to make sure.</h3>
+                <hr>
+                <h4>Common diabetes symptoms</h4>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Going to the toilet a lot, especially at night.</li>
+                    <li class="list-group-item">Being really thirsty.</li>
+                    <li class="list-group-item">Feeling more tired than usual.</li>
+                    <li class="list-group-item">Losing weight without trying to.</li>
+                    <li class="list-group-item">Genital itching or thrush.</li>
+                    <li class="list-group-item">Cuts and wounds take longer to heal.</li>
+                    <li class="list-group-item">Blurred eyesight</li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2" text-align="center" >
+                        <a type="submit"  class="btn btn-danger logout" href="/logout" margin-left="100%">logout</a> 
+   
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script>
+        $("p").hide()
+
+        $("#type1").click(function () {
+            $("#type1p").toggle();
+        })
+        $("#type2").click(function () {
+            $("#type2p").toggle();
+        })
+    </script>
